@@ -1,0 +1,28 @@
+server:
+  port: 9071
+spring:
+  application:
+    name: eureka02
+
+
+# 配置注册中心
+eureka:
+  instance:
+    hostname: localhost
+    ip-address: false
+    # 实例以ip形式注册，false表示以hostname注册
+    prefer-ip-address: false
+    # 表示实例在注册中心注册的唯一标识
+    instance-id: eurekaServer02
+    # server收到两个心跳之间的等待时间，默认90s
+    lease-expiration-duration-in-seconds: 120
+    # client向Server发送心跳频率，默认30s
+    lease-renewal-interval-in-seconds: 30
+
+  client:
+    # 是否注册自己到注册中心，一般使用false
+    register-with-eureka: false
+    # 客户端是否从注册中心获取实例，集群需要开启true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9070/eureka/
